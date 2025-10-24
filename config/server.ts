@@ -8,6 +8,10 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
+  admin: {
+    url: env('SERVER_URL') ? `${env('SERVER_URL')}/admin` : '/admin',
+    autoOpen: false,
+  },
   webhooks: {
     populate: {
       headers: true,
