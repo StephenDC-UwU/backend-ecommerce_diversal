@@ -1,7 +1,16 @@
+import { url } from "inspector";
+
 export default ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
-  port: env.int('PORT', 1337),
+  port: env.int('PORT', 5000),
+  url: env('SRVER_URL'),
+  proxy: true,
   app: {
     keys: env.array('APP_KEYS'),
+  },
+  webhooks: {
+    populate: {
+      headers: true,
+    },
   },
 });
