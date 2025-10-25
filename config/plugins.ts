@@ -1,5 +1,5 @@
 export default () => ({
     'content-releases': {
-    enabled: false,
+    enabled: true,
   },
 });
