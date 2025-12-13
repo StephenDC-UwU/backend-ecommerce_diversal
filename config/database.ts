@@ -1,23 +1,26 @@
-const parse = require('pg-connection-string').parse;
+const path = require('path');
 
 module.exports = ({ env }) => {
-  // Se asegura de leer la variable DATABASE_URL que pondrás en Strapi Cloud
-  const config = parse(env('DATABASE_URL'));
+  const client = env('DATABASE_CLIENT', 'postgres');
+
+  const connections = {
+    postgres: {
+      connection: {
+        host: env('DATABASE_HOST'),
+        port: env.int('DATABASE_PORT', 5432),
+        database: env('DATABASE_NAME'),
+        user: env('DATABASE_USERNAME'),
+        password: env('DATABASE_PASSWORD'),
+        ssl: env.bool('DATABASE_SSL', false) ? { rejectUnauthorized: false } : false,
+      }
+    },
+  };
 
   return {
     connection: {
-      client: 'postgres',
-      connection: {
-        host: config.host,
-        port: config.port,
-        database: config.database,
-        user: config.user,
-        password: config.password,
-        ssl: {
-          rejectUnauthorized: false // Necesario para conectar con Neon
-        },
-      },
-      debug: false,
+      client,
+      ...connections[client],
+      acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
     },
   };
 };
