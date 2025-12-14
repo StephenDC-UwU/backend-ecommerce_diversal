@@ -56,16 +56,23 @@
       "target": "api::brand.brand",
       "inversedBy": "products"
     },
-    "sub_sub_category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::sub-sub-category.sub-sub-category",
-      "inversedBy": "products"
-    },
     "gender": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::gender.gender"
+      "target": "api::gender.gender",
+      "mappedBy": "product"
+    },
+    "sub_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sub-category.sub-category",
+      "mappedBy": "product"
+    },
+    "colors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::color.color",
+      "mappedBy": "product"
     }
   }
 }

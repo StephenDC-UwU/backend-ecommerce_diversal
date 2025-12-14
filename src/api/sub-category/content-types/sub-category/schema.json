@@ -31,17 +31,16 @@
         "audios"
       ]
     },
-    "categories": {
+    "category": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "sub_categories"
+      "relation": "oneToOne",
+      "target": "api::category.category"
     },
-    "sub_sub_categories": {
+    "product": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::sub-sub-category.sub-sub-category",
-      "mappedBy": "sub_category"
+      "relation": "oneToOne",
+      "target": "api::product.product",
+      "inversedBy": "sub_category"
     }
   }
 }

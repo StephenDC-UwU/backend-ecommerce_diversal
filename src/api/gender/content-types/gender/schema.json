@@ -17,6 +17,22 @@
     "slug": {
       "type": "uid",
       "targetField": "gender_name"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product",
+      "inversedBy": "gender"
     }
   }
 }
