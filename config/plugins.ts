@@ -1,19 +1,16 @@
-import { config } from "process";
-
-export default ({env}) => ({
+module.exports = ({ env }) => ({
   upload: {
-    config:{
+    config: {
       provider: 'cloudinary',
       providerOptions: {
         cloud_name: env('CLOUDINARY_NAME'),
         api_key: env('CLOUDINARY_KEY'),
-        api_secret: env('CLOUDINARY_SECRET')
+        api_secret: env('CLOUDINARY_SECRET'),
       },
-      actionOptions:{
-        upload:{},
-        uploadStream: {},
+      actionOptions: {
+        upload: {},
         delete: {},
-      }
-    }
-  }
+      },
+    },
+  },
 });
