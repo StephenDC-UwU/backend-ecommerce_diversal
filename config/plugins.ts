@@ -1,9 +1,6 @@
 import { config } from "process";
 
 export default ({env}) => ({
-    'content-releases': {
-    enabled: true,
-  },
   upload: {
     config:{
       provider: 'cloudinary',
