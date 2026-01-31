@@ -64,9 +64,9 @@
     },
     "sub_category": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::sub-category.sub-category",
-      "mappedBy": "product"
+      "inversedBy": "products"
     },
     "colors": {
       "type": "relation",
